@@ -3,10 +3,10 @@
 return new \Phalcon\Config(array(
     'database' => array(
         'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'test',
+        'host'        => '127.0.0.1',
+        'username'    => 'praxus_spider',
+        'password'    => 'UuBM3v4WxGyPRjK7',
+        'dbname'      => 'praxus_spider',
         'charset'     => 'utf8',
     ),
     'application' => array(
