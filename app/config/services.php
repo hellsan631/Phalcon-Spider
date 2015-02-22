@@ -64,6 +64,29 @@ $di->set('db', function () use ($config) {
 });
 
 /**
+ * Set Redis as our cache
+ */
+
+$di->set('cache', function() {
+
+    //Connect to redis
+    $redis = new Redis();
+    $redis->connect('127.0.0.1', 6379);
+
+    //Create a Data frontend and set a default lifetime to 1 hour
+    $frontend = new Phalcon\Cache\Frontend\Data(array(
+        'lifetime' => 3600
+    ));
+
+    //Create the cache passing the connection
+    $cache = new Phalcon\Cache\Backend\Redis($frontend, array(
+        'redis' => $redis
+    ));
+
+    return $cache;
+});
+
+/**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
 $di->set('modelsMetadata', function () {
